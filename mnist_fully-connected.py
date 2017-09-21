@@ -19,14 +19,14 @@ y = tf.layers.dense(hidden2, 10, name="outputs")
 cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))
 
 # setup the training step
-train_step = tf.train.GradientDescentOptimizer(0.01).minimize(cross_entropy)
+train_step = tf.train.GradientDescentOptimizer(0.05).minimize(cross_entropy)
 
 # some tensorflow boilerplate to initialize everything
 sess = tf.InteractiveSession()
 tf.global_variables_initializer().run()
 
 # train the model for 1000 steps
-for _ in range(1000):
+for _ in range(2000):
     batch_xs, batch_ys = mnist.train.next_batch(100)
     sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
 

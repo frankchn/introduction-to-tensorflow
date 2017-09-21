@@ -36,7 +36,7 @@ tf.global_variables_initializer().run()
 summary_writer = tf.summary.FileWriter("/tmp/mnist_logs", sess.graph)
 
 # train the model for 1000 steps and write summaries
-for i in range(1000):
+for i in range(5000):
     batch_xs, batch_ys = mnist.train.next_batch(100)
     summary, _ = sess.run([merged, train_step], feed_dict={x: batch_xs, y_: batch_ys})
     summary_writer.add_summary(summary, i)
